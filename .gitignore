@@ -1,0 +1,4 @@
+# Exclude object files
+*.o
+*.obj
+*.out
