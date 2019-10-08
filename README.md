@@ -9,7 +9,7 @@ fact -> (exp) | -fact | num
 ```
 
 ## Final Grammar
-In this version of the grammar, left-recursion was removed.
+Left-recursion was removed.
 
 ```
 exp -> term exp'
@@ -18,3 +18,17 @@ term -> fact term'
 term' -> * fact term | λ
 fact -> (exp) | -fact | num
 ```
+
+## Predictive Sets
+
+|        π           |   Prediction(π)    |
+|--------------------|--------------------|
+|exp -> term exp'    |{ (, -, num }       |
+|exp' -> + term exp' |{ + }               |
+|exp' -> λ           |{ $, ) }            |
+|term -> fact term'  |{ (, - , num }      |
+|term' -> * fact term|{ * }               |
+|term' -> λ          |{ +, $, ) }         |
+|fact -> (exp)       |{ ( }               |
+|fact -> -fact       |{ - }               |
+|fact -> num         |{ num }             |
